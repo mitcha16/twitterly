@@ -1,0 +1,7 @@
+<%= form_for(@post) do |f| %>
+  <%= render 'shared/error', o: @post %>
+  <div class="field">
+    <%= f.text_area :content, placeholder: "Write here!" %>
+  </div>
+  <%= f.submit "Tweet", class: "btn btn-primary" %>
+<% end %>
