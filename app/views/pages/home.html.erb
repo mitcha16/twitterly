@@ -7,6 +7,9 @@
       <section class="user_info">
         <%= render 'shared/current_user' %>
       </section>
+      <section class="info">
+        <%= render 'shared/info' %>
+      </section>
       <section class="post">
         <%= render 'shared/post' %>
       </section>
@@ -25,7 +28,7 @@
   <div class="well">
     <div class="row">
       <div class="col-md-8">
-        <h4>Receive free coupons, free shipping, and a T-Shirt!*</h4>
+        <h4>Receive free coupons, free shipping, and a T-Shirt for signing up!*</h4>
       </div>
       <div class="col-md-4">
         <%= link_to "Sign Up", users_new_path,
@@ -33,7 +36,7 @@
       </div>
     </div>
   </div>
-  <h5>**Not Really**</h5>
+  <h6>**Not really, but you should still sign up!**</h6>
   <% end %>
   <div class="row">
     <%= render "partials/carousel" %>

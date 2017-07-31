@@ -17,3 +17,8 @@ end
   content = "#{Faker::LordOfTheRings.character} at #{Faker::LordOfTheRings.location}"
   User.first(10).each { |user| user.posts.create!(content: content) }
 end
+
+users = User.all
+user  = users.first
+users[5..33].each { |followed| user.follow(followed) }
+users[4..50].each { |follower| follower.follow(user) }

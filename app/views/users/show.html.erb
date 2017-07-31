@@ -9,6 +9,24 @@
     </section>
   </aside>
   <div class="col-md-8">
+    <% if logged_in? %>
+    <% unless current_user?(@user) %>
+    <div id="follow">
+      <% if current_user.following?(@user) %>
+      <%= form_for(current_user.current_followers.find_by(followed_id: @user.id),
+      html: { method: :delete }) do |f| %>
+      <%= f.submit "Unfollow", class: "btn" %>
+      <% end %>
+      <% else %>
+      <%= form_for(current_user.current_followers.build) do |f| %>
+      <div><%= hidden_field_tag :followed_id, @user.id %></div>
+      <%= f.submit "Follow", class: "btn btn-primary" %>
+      <% end %>
+      <% end %>
+
+    </div>
+    <% end %>
+    <% end %>
     <% if @user.posts.any? %>
     <h3>Tweets (<%= @user.posts.count %>)</h3>
     <ol class="posts">
