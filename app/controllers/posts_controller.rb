@@ -7,12 +7,19 @@ class PostsController < ApplicationController
       flash[:success] = "Posted!"
       redirect_to root_url
     else
+      @all_posts = []
       redirect_to root_url
     end
   end
 
   def destroy
+    @post = current_user.posts.find_by(id: params[:id])
+    redirect_to root_url if @post.nil?
+    @post.destroy
+    flash[:success] = "deleted"
+    redirect_to request.referrer
   end
+
 
   private
 
